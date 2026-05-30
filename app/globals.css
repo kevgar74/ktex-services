@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* ============================================================
+   K-Tex Services — Design tokens
+   ============================================================ */
+:root {
+  /* Brand */
+  --navy:            #0a2342;
+  --navy-strong:     #0e2d57;
+  --navy-soft:       #1b4b82;
+  --navy-tint:       #e7edf4;
+
+  --green:           #15783a;
+  --green-deep:      #0f5a2a;
+  --green-soft:      #1f9249;
+  --green-brand:     #0f3d1c;
+  --green-tint:      #e6f1ea;
+
+  /* Surface */
+  --canvas:          #ffffff;
+  --surface-soft:    #f2f5f8;
+  --surface-warm:    #f5f2ea;
+  --surface-deep:    #0a2342;
+  --hairline:        #d4dae0;
+  --hairline-soft:   #e5eaef;
+
+  /* Text */
+  --ink-deep:        #0a1a2a;
+  --ink:             #1c2733;
+  --charcoal:        #3a4754;
+  --slate:           #54616e;
+  --steel:           #6b7884;
+  --stone:           #93a0ac;
+  --disabled-text:   #bfc7cf;
+  --on-dark:         #ffffff;
+  --on-dark-soft:    #b9c6d6;
+
+  /* Semantic */
+  --success:         #1e8e3e;
+  --success-bg:      #e6f4ea;
+  --critical:        #d12b3a;
+  --critical-bg:     #fbe8ea;
+  --warning:         #f2b705;
+  --warning-bg:      #fdf3d4;
+
+  /* Elevation */
+  --shadow-1: rgba(10,35,66,0.10) 0px 1px 2px 0px;
+  --shadow-2: rgba(10,35,66,0.16) 0px 4px 14px -2px;
+  --shadow-pop: rgba(10,22,42,0.20) 0px 12px 32px -8px;
+  --shadow-sticky: rgba(10,22,42,0.22) 0px 1px 6px 0px;
+
+  /* Radii */
+  --r-sm: 4px;
+  --r-md: 6px;
+  --r-lg: 8px;
+  --r-xl: 16px;
+  --r-2xl: 24px;
+  --r-3xl: 32px;
+  --r-feature: 40px;
+  --r-full: 100px;
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Hanken Grotesk', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.16px;
+  color: var(--ink-deep);
+  background: var(--canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--navy-soft); text-decoration: none; }
+button { font-family: inherit; }
+
+/* ============================================================
+   Global animations (GSAP-friendly — opacity starts at 1,
+   GSAP sets from: {opacity:0} in useEffect so no flash on SSR)
+   ============================================================ */
+@keyframes spin-badge { to { transform: rotate(360deg); } }
+.spin-badge { animation: spin-badge 18s linear infinite; }
+
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.page-enter { animation: page-enter 0.4s ease-out both; }
+
+/* scrollbar thin */
+* { scrollbar-width: thin; scrollbar-color: var(--hairline) transparent; }
